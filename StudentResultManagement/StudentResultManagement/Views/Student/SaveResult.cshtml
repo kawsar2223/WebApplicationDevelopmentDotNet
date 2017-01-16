@@ -1,0 +1,70 @@
+﻿@model StudentResultManagement.Models.StudentResult
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SaveResult</title>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+    <body>
+        <form id="saveresutlForm" method="POST">
+            <h2>Save Student Result</h2>
+            @if (ViewBag.Message!=null)
+            {
+                @ViewBag.Message
+            }
+            <table>
+                <tr>
+                    <td>
+                        <label for="RegistrationNo">Registration No</label>
+                    </td>
+                    <td>
+                        <input type="text" id="RegistrationNo" name="RegistrationNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="SubjectId">Subject</label>
+                    </td>
+                    <td>
+                        <select id="SubjectId" name="SubjectId">
+                            <option value="" id="SubjectId">Select...</option>
+                            @foreach (var subject in ViewBag.Subjects)
+                            {
+                                <option value="@subject.Id">@subject.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Score">Score</label>
+                    </td>
+                    <td>
+                        <input type="text" id="Score" name="Score" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <input type="submit" value="Save"/>
+                    </td>
+                </tr>
+            </table>
+            @Html.ActionLink("Show All","ViewStudentResult","Student")
+        </form>
+      
+        <script src="~/Scripts/jquery-2.2.0.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/myJavascript.js"></script>
+    
+    </body>
+</html>

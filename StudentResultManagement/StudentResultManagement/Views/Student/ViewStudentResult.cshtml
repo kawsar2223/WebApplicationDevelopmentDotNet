@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+    double totalScore = 0;
+    int counter =Convert.ToInt32(ViewBag.Total);
+    float average = 0;
+}
+<link href="~/Content/Style.css" rel="stylesheet" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewStudentResult</title>
+</head>
+<body>
+    <div>
+        
+        <form id="viewResult" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <label for="RegistrationNo">Registration No</label>
+                    </td>
+                    <td>
+                        <input type="text" id="RegistrationNo" name="RegistrationNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <input type="submit" value="Show"/>
+                    </td>
+                </tr>
+               
+
+            </table>
+            <table id="showResult">
+                <tr>
+                    <th>Subject</th>
+                    <th>Subject Name</th>
+                </tr>
+               
+                    @if (ViewBag.StudentResults != null)
+                    {
+
+                        foreach (var result in ViewBag.StudentResults)
+                        {
+                            totalScore += result.Score;
+                            average = (float) (totalScore/counter);
+                            <tr>
+                                <td>
+                                    @result.Subject
+                                </td>
+                                <td>
+                                    @result.Score
+                                </td>
+                            </tr>
+
+
+                        }
+                        <tr>
+                            <td>
+                                <label> Average:</label> 
+                            </td>
+                            <td>
+                             
+                                @average
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                       
+                            <td>
+                                @ViewBag.Message
+                            </td>
+                        </tr>
+
+                    }
+                
+            </table>
+            @Html.ActionLink("Back","SaveResult","Student")
+        </form> 
+    </div>
+</body>
+</html>

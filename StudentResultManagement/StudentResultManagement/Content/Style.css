@@ -1,0 +1,9 @@
+﻿label.error {
+    color: red;
+    font-style: italic;
+   
+}
+#showResult td,th,tr {
+    border: 1px saddlebrown solid;
+    width: 150px;
+}
